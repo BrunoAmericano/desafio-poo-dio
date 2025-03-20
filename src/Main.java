@@ -1,63 +1,47 @@
-import br.com.dio.desafio.dominio.Bootcamp;
-import br.com.dio.desafio.dominio.Curso;
-import br.com.dio.desafio.dominio.Dev;
-import br.com.dio.desafio.dominio.Mentoria;
-
-import java.time.LocalDate;
+import java.time.LocalDate;  // Importando LocalDate
 
 public class Main {
     public static void main(String[] args) {
+        // Criando o Bootcamp
+        Bootcamp bootcamp = new Bootcamp();
+        bootcamp.setNome("Bootcamp Java Full Stack");
+        bootcamp.setDescricao("Aprenda tudo sobre Java e desenvolvimento Full Stack!");
+
+        // Criando conteúdos (Curso e Mentoria)
         Curso curso1 = new Curso();
-        curso1.setTitulo("curso java");
-        curso1.setDescricao("descrição curso java");
+        curso1.setTitulo("Curso de Java");
+        curso1.setDescricao("Aprenda os conceitos básicos de Java.");
         curso1.setCargaHoraria(8);
 
-        Curso curso2 = new Curso();
-        curso2.setTitulo("curso js");
-        curso2.setDescricao("descrição curso js");
-        curso2.setCargaHoraria(4);
+        Mentoria mentoria1 = new Mentoria();
+        mentoria1.setTitulo("Mentoria de Java");
+        mentoria1.setDescricao("Sessão de perguntas e respostas sobre Java.");
+        mentoria1.setData(LocalDate.now().plusDays(1));
 
-        Mentoria mentoria = new Mentoria();
-        mentoria.setTitulo("mentoria de java");
-        mentoria.setDescricao("descrição mentoria java");
-        mentoria.setData(LocalDate.now());
-
-        /*System.out.println(curso1);
-        System.out.println(curso2);
-        System.out.println(mentoria);*/
-
-        Bootcamp bootcamp = new Bootcamp();
-        bootcamp.setNome("Bootcamp Java Developer");
-        bootcamp.setDescricao("Descrição Bootcamp Java Developer");
+        // Adicionando conteúdos ao Bootcamp
         bootcamp.getConteudos().add(curso1);
-        bootcamp.getConteudos().add(curso2);
-        bootcamp.getConteudos().add(mentoria);
+        bootcamp.getConteudos().add(mentoria1);
 
-        Dev devCamila = new Dev();
-        devCamila.setNome("Camila");
-        devCamila.inscreverBootcamp(bootcamp);
-        System.out.println("Conteúdos Inscritos Camila:" + devCamila.getConteudosInscritos());
-        devCamila.progredir();
-        devCamila.progredir();
-        System.out.println("-");
-        System.out.println("Conteúdos Inscritos Camila:" + devCamila.getConteudosInscritos());
-        System.out.println("Conteúdos Concluídos Camila:" + devCamila.getConteudosConcluidos());
-        System.out.println("XP:" + devCamila.calcularTotalXp());
+        // Criando um desenvolvedor
+        Dev dev1 = new Dev();
+        dev1.setNome("Bruno");
 
-        System.out.println("-------");
+        // Inscrevendo o desenvolvedor no bootcamp
+        dev1.inscreverBootcamp(bootcamp);
 
-        Dev devJoao = new Dev();
-        devJoao.setNome("Joao");
-        devJoao.inscreverBootcamp(bootcamp);
-        System.out.println("Conteúdos Inscritos João:" + devJoao.getConteudosInscritos());
-        devJoao.progredir();
-        devJoao.progredir();
-        devJoao.progredir();
-        System.out.println("-");
-        System.out.println("Conteúdos Inscritos João:" + devJoao.getConteudosInscritos());
-        System.out.println("Conteúdos Concluidos João:" + devJoao.getConteudosConcluidos());
-        System.out.println("XP:" + devJoao.calcularTotalXp());
+        // Exibindo os conteúdos inscritos do dev
+        System.out.println("Conteúdos inscritos para " + dev1.getNome() + ":");
+        dev1.getConteudosInscritos().forEach(System.out::println);
 
+        // O dev progride (completa um conteúdo)
+        System.out.println("\n" + dev1.getNome() + " progrediu!");
+        dev1.progredir();
+
+        // Exibindo os conteúdos concluídos do dev
+        System.out.println("\nConteúdos concluídos para " + dev1.getNome() + ":");
+        dev1.getConteudosConcluidos().forEach(System.out::println);
+
+        // Exibindo o XP total do dev
+        System.out.println("\nXP total de " + dev1.getNome() + ": " + dev1.calcularTotalXp());
     }
-
 }
