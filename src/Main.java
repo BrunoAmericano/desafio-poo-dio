@@ -1,32 +1,43 @@
 package br.com.bootcamp;
 
-import java.time.LocalDate;
-
 public class Main {
+
     public static void main(String[] args) {
-        Bootcamp bootcamp = new Bootcamp();
-        bootcamp.setNome("Bootcamp Java Developer");
-        bootcamp.setDescricao("Aprenda Java do básico ao avançado");
 
-        Curso curso1 = new Curso();
-        curso1.setTitulo("Curso de Java");
-        curso1.setDescricao("Aprenda os fundamentos de Java");
-        curso1.setCargaHoraria(20);
+        // Criando cursos e mentorias
+        Curso curso1 = new Curso("Curso de Java", "Aprenda Java do zero", 80);
+        Curso curso2 = new Curso("Curso de Python", "Aprenda Python", 60);
+        Mentoria mentoria1 = new Mentoria("Mentoria de Desenvolvimento", "Mentoria para desenvolvedores", 40);
 
-        Mentoria mentoria1 = new Mentoria();
-        mentoria1.setTitulo("Mentoria de Java");
-        mentoria1.setDescricao("Tire suas dúvidas sobre Java");
-        mentoria1.setData(LocalDate.now());
+        // Criando bootcamp e adicionando cursos e mentorias
+        Bootcamp bootcamp = new Bootcamp("Bootcamp de Desenvolvimento");
+        bootcamp.addConteudo(curso1);
+        bootcamp.addConteudo(curso2);
+        bootcamp.addConteudo(mentoria1);
 
-        bootcamp.getConteudos().add(curso1);
-        bootcamp.getConteudos().add(mentoria1);
+        // Criando devs
+        Dev dev1 = new Dev("Bruno");
+        Dev dev2 = new Dev("Eduarda");
 
-        Dev dev1 = new Dev();
-        dev1.setNome("Bruno");
+        // Inscrevendo devs no bootcamp
         dev1.inscreverBootcamp(bootcamp);
+        dev2.inscreverBootcamp(bootcamp);
 
-        System.out.println("XP antes de progredir: " + dev1.calcularTotalXp());
+        // Progredindo devs
+        System.out.println("XP antes de progredir:");
+        System.out.println(dev1.getNome() + ": " + dev1.getXp());
+        System.out.println(dev2.getNome() + ": " + dev2.getXp());
+
         dev1.progredir();
-        System.out.println("XP após progredir: " + dev1.calcularTotalXp());
+        dev2.progredir();
+
+        System.out.println("XP após progredir:");
+        System.out.println(dev1.getNome() + ": " + dev1.getXp());
+        System.out.println(dev2.getNome() + ": " + dev2.getXp());
+
+        // Mostrando os detalhes dos devs
+        System.out.println("\nDetalhes dos Devs:");
+        System.out.println(dev1);
+        System.out.println(dev2);
     }
 }
