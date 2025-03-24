@@ -1,25 +1,24 @@
 package br.com.bootcamp;
 
 public class Mentoria extends Conteudo {
+    private int duracao;
 
-    private String dataMentoria;
+    // Construtor com parâmetros
+    public Mentoria(String nome, String descricao, int duracao) {
+        super(nome, descricao);  // Chama o construtor da classe pai (Conteudo)
+        this.duracao = duracao;
+    }
 
     @Override
     public double calcularXp() {
-        return XP_PADRAO + 20;  // A XP da mentoria é sempre XP_PADRAO + 20
+        return XP_PADRAO + (duracao * 0.2);  // Lógica de XP para a mentoria
     }
 
-    // Getters e Setters
-    public String getDataMentoria() {
-        return dataMentoria;
+    public int getDuracao() {
+        return duracao;
     }
 
-    public void setDataMentoria(String dataMentoria) {
-        this.dataMentoria = dataMentoria;
-    }
-
-    @Override
-    public String toString() {
-        return super.toString() + " | Data da Mentoria: " + dataMentoria;
+    public void setDuracao(int duracao) {
+        this.duracao = duracao;
     }
 }

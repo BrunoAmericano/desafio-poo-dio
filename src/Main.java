@@ -10,7 +10,7 @@ public class Main {
         Mentoria mentoria1 = new Mentoria("Mentoria de Desenvolvimento", "Mentoria para desenvolvedores", 40);
 
         // Criando bootcamp e adicionando cursos e mentorias
-        Bootcamp bootcamp = new Bootcamp("Bootcamp de Desenvolvimento");
+        Bootcamp bootcamp = new Bootcamp("Bootcamp de Desenvolvimento", "Desenvolvimento de habilidades em programação");
         bootcamp.addConteudo(curso1);
         bootcamp.addConteudo(curso2);
         bootcamp.addConteudo(mentoria1);
