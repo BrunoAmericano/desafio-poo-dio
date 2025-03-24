@@ -1,11 +1,16 @@
 package br.com.bootcamp;
 
 public abstract class Conteudo {
-    protected String titulo;
-    protected String descricao;
 
+    protected static final double XP_PADRAO = 10d;
+
+    private String titulo;
+    private String descricao;
+
+    // Método que será implementado nas classes filhas (Curso e Mentoria)
     public abstract double calcularXp();
 
+    // Getters e Setters
     public String getTitulo() {
         return titulo;
     }
@@ -20,5 +25,10 @@ public abstract class Conteudo {
 
     public void setDescricao(String descricao) {
         this.descricao = descricao;
+    }
+
+    @Override
+    public String toString() {
+        return "Título: " + titulo + " | Descrição: " + descricao;
     }
 }
