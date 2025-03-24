@@ -1,8 +1,8 @@
-public abstract class Conteudo {
-    protected static final double XP_PADRAO = 10d;
+package br.com.bootcamp;
 
-    private String titulo;
-    private String descricao;
+public abstract class Conteudo {
+    protected String titulo;
+    protected String descricao;
 
     public abstract double calcularXp();
 

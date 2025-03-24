@@ -1,47 +1,32 @@
-import java.time.LocalDate;  // Importando LocalDate
+package br.com.bootcamp;
+
+import java.time.LocalDate;
 
 public class Main {
     public static void main(String[] args) {
-        // Criando o Bootcamp
         Bootcamp bootcamp = new Bootcamp();
-        bootcamp.setNome("Bootcamp Java Full Stack");
-        bootcamp.setDescricao("Aprenda tudo sobre Java e desenvolvimento Full Stack!");
+        bootcamp.setNome("Bootcamp Java Developer");
+        bootcamp.setDescricao("Aprenda Java do básico ao avançado");
 
-        // Criando conteúdos (Curso e Mentoria)
         Curso curso1 = new Curso();
         curso1.setTitulo("Curso de Java");
-        curso1.setDescricao("Aprenda os conceitos básicos de Java.");
-        curso1.setCargaHoraria(8);
+        curso1.setDescricao("Aprenda os fundamentos de Java");
+        curso1.setCargaHoraria(20);
 
         Mentoria mentoria1 = new Mentoria();
         mentoria1.setTitulo("Mentoria de Java");
-        mentoria1.setDescricao("Sessão de perguntas e respostas sobre Java.");
-        mentoria1.setData(LocalDate.now().plusDays(1));
+        mentoria1.setDescricao("Tire suas dúvidas sobre Java");
+        mentoria1.setData(LocalDate.now());
 
-        // Adicionando conteúdos ao Bootcamp
         bootcamp.getConteudos().add(curso1);
         bootcamp.getConteudos().add(mentoria1);
 
-        // Criando um desenvolvedor
         Dev dev1 = new Dev();
         dev1.setNome("Bruno");
-
-        // Inscrevendo o desenvolvedor no bootcamp
         dev1.inscreverBootcamp(bootcamp);
 
-        // Exibindo os conteúdos inscritos do dev
-        System.out.println("Conteúdos inscritos para " + dev1.getNome() + ":");
-        dev1.getConteudosInscritos().forEach(System.out::println);
-
-        // O dev progride (completa um conteúdo)
-        System.out.println("\n" + dev1.getNome() + " progrediu!");
+        System.out.println("XP antes de progredir: " + dev1.calcularTotalXp());
         dev1.progredir();
-
-        // Exibindo os conteúdos concluídos do dev
-        System.out.println("\nConteúdos concluídos para " + dev1.getNome() + ":");
-        dev1.getConteudosConcluidos().forEach(System.out::println);
-
-        // Exibindo o XP total do dev
-        System.out.println("\nXP total de " + dev1.getNome() + ": " + dev1.calcularTotalXp());
+        System.out.println("XP após progredir: " + dev1.calcularTotalXp());
     }
 }

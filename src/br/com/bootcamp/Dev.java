@@ -1,3 +1,5 @@
+package br.com.bootcamp;
+
 import java.util.LinkedHashSet;
 import java.util.Optional;
 import java.util.Set;
@@ -9,21 +11,18 @@ public class Dev {
 
     public void inscreverBootcamp(Bootcamp bootcamp) {
         this.conteudosInscritos.addAll(bootcamp.getConteudos());
-        bootcamp.getDevsInscritos().add(this);
     }
 
     public void progredir() {
-        Optional<Conteudo> conteudo = this.conteudosInscritos.stream().findFirst();
+        Optional<Conteudo> conteudo = conteudosInscritos.stream().findFirst();
         if (conteudo.isPresent()) {
-            this.conteudosConcluidos.add(conteudo.get());
-            this.conteudosInscritos.remove(conteudo.get());
-        } else {
-            System.err.println("Você não está matriculado em nenhum conteúdo!");
+            conteudosConcluidos.add(conteudo.get());
+            conteudosInscritos.remove(conteudo.get());
         }
     }
 
     public double calcularTotalXp() {
-        return this.conteudosConcluidos.stream().mapToDouble(Conteudo::calcularXp).sum();
+        return conteudosConcluidos.stream().mapToDouble(Conteudo::calcularXp).sum();
     }
 
     public String getNome() {
@@ -32,21 +31,5 @@ public class Dev {
 
     public void setNome(String nome) {
         this.nome = nome;
-    }
-
-    public Set<Conteudo> getConteudosInscritos() {
-        return conteudosInscritos;
-    }
-
-    public Set<Conteudo> getConteudosConcluidos() {
-        return conteudosConcluidos;
-    }
-
-    @Override
-    public String toString() {
-        return "Dev{" +
-                "nome='" + nome + '\'' +
-                ", XP total=" + calcularTotalXp() +
-                '}';
     }
 }
